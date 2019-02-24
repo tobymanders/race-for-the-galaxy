@@ -2,17 +2,15 @@ import game_functions as gf
 from hand import Hand
 from deck import Deck
 from tableau import Tableau
+from scoreboard import Scoreboard
 
 # Settings (to be moved to module).
 tableau_limit = 6
 
+# Create scoreboard
+scoreboard = Scoreboard(vp_pool=12)
 
 def run_game():
-    # Initialize game, VPs, deck.
-    vp_pool = 12
-
-    # Create instance for storing game stats.
-    score = 0
 
     # Create deck, hand, tableau.
     deck = Deck()
@@ -35,6 +33,6 @@ def run_game():
         # gf.update_stats()
 
         # Check for game end.
-        game_end = gf.end_check(tableau)
+        game_end = gf.end_check(tableau, scoreboard)
 
 run_game()

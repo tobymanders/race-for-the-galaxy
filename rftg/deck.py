@@ -9,6 +9,7 @@ class Deck:
 
         self.load_settlements()
         self.load_developments()
+        self.fix_phase_references()
 
         self.shuffle()
 
@@ -43,8 +44,17 @@ class Deck:
                 new_card['Cost'] = int(new_card['Cost'])
                 new_card['VP'] = int(new_card['VP'])
                 new_card['Defense'] = int(new_card['Defense'])
+                new_card['?'] = bool(int(new_card['?']))
 
                 self.deck.append(new_card)
+
+    def fix_phase_references(self):
+        for card in self.deck:
+            newphase = []
+            ph_tup = tuple(card['Phase'])
+            for elem in ph_tup:
+                newphase.append(int(elem))
+            card['Phase'] = newphase
 
     def shuffle(self):
         random.shuffle(self.deck)

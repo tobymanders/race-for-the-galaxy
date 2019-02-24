@@ -1,12 +1,20 @@
 import random
 
 
-def end_check(tableau):
-    ended = tableau.tableau_complete()
-    if ended:
+def end_check(tableau, scoreboard):
+    ended = False
+    ended_tableau = tableau.tableau_complete()
+    ended_vp = scoreboard.vp_pool_exhausted()
+
+    if ended_tableau or ended_vp:
+        ended = True
+
         print('GAME COMPLETE.')
         print('Final Tableau:')
         tableau.print_tableau()
+
+        vp_total = scoreboard.count_vp(tableau) + scoreboard.get_player_vp()
+        print('Final VPs:', vp_total)
 
     return ended
 
@@ -36,6 +44,14 @@ def affordable_cards(hand, cards):
     spending_power = hand.spending_power()
     affordable = [card for card in cards if card['Cost'] <= spending_power]
     return affordable
+
+
+def consume_cards(cards):
+    subset = []
+    for card in cards:
+        if 3 in card['Phase']:
+            subset.append(card)
+    return subset
 
 
 def choose_action():
@@ -82,7 +98,7 @@ def play_phase(phase, deck, hand, tableau):
     if phase == 2:
         settle(deck, hand, tableau)
     if phase == 3:
-        consumetrade()
+        consume_trade()
     if phase == 4:
         produce(tableau)
 
@@ -137,11 +153,20 @@ def settle(deck, hand, tableau):
     # To-do: tally perks and apply.
 
 
-def consumetrade():
+def play_trade(tableau):
+    tableau.get_trade_powers()
 
 
-    # To do
-    print('Not yet implemented.')
+def consume_trade(deck, hand, tableau):
+    # For now, always play trade.
+    play_trade(tableau)
+
+    # List of consume powers
+    powers = tableau.get_consume_powers()
+
+    # Go through consume powers one by one.
+    for power in powers:
+        power.use_power(deck, hand, tableau)
 
 
 def produce(tableau):

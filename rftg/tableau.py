@@ -32,4 +32,17 @@ class Tableau:
             defense += card['Defense']
         return defense
 
+    # def get_trade_powers(self):
+    #
+    # def get_consume_powers(self):
+
+    def consume_developments(self):
+        cards = []
+        for card in self.tableau:
+            if card['Phase1'] == 3 or card['Phase2'] == 3:
+                cards.append(card)
+        return cards
+
+
+
 
