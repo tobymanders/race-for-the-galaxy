@@ -9,6 +9,9 @@ class Tableau:
     def add_to_tableau(self, card):
         # Add card to tableau.
         self.tableau.append(card)
+        if card['Class'] == 'SETTLEMENT':
+            if card['Windfall']:
+                self.produce_good(-1)
 
     def print_tableau(self):
         if self.tableau:
@@ -19,5 +22,14 @@ class Tableau:
 
     def tableau_complete(self):
         return len(self.tableau) > self.tableau_limit
+
+    def produce_good(self, index):
+        self.tableau[index]['Good'] = 1
+
+    def get_defense(self):
+        defense = 0
+        for card in self.tableau:
+            defense += card['Defense']
+        return defense
 
 

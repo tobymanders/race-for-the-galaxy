@@ -23,14 +23,6 @@ class Hand:
         cards = deck.draw_from_deck(4)
         self.add_to_hand(cards)
 
-    def development_cards(self):
-        developments = [card for card in self.hand if card['Class'] == 'DEVELOPMENT']
-        return developments
-
-    def settlement_cards(self):
-        settlements = [card for card in self.hand if card['Class'] == 'SETTLEMENT']
-        return settlements
-
     def print_hand(self):
         if self.hand:
             for card in self.hand:

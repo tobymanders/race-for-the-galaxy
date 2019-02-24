@@ -22,6 +22,16 @@ def choose_discard_from_hand(hand):
     return discard
 
 
+def development_cards(cards):
+    developments = [card for card in cards if card['Class'] == 'DEVELOPMENT']
+    return developments
+
+
+def settlement_cards(cards):
+    settlements = [card for card in cards if card['Class'] == 'SETTLEMENT']
+    return settlements
+
+
 def affordable_cards(hand, cards):
     spending_power = hand.spending_power()
     affordable = [card for card in cards if card['Cost'] <= spending_power]
@@ -74,7 +84,7 @@ def play_phase(phase, deck, hand, tableau):
     if phase == 3:
         consumetrade()
     if phase == 4:
-        produce()
+        produce(tableau)
 
 
 def explore(deck, hand):
@@ -98,7 +108,7 @@ def explore(deck, hand):
 
 def develop(deck, hand, tableau):
     # List development options from hand.
-    dev_cards = hand.development_cards()
+    dev_cards = development_cards(hand.hand)
 
     # Just affordable cards.
     affordable = affordable_cards(hand, dev_cards)
@@ -114,7 +124,7 @@ def develop(deck, hand, tableau):
 
 def settle(deck, hand, tableau):
     # List settlement options from hand.
-    set_cards = hand.settlement_cards()
+    set_cards = settlement_cards(hand.hand)
 
     # Just affordable cards.
     affordable = affordable_cards(hand, set_cards)
@@ -126,6 +136,7 @@ def settle(deck, hand, tableau):
 
     # To-do: tally perks and apply.
 
+
 def consumetrade():
 
 
@@ -133,6 +144,9 @@ def consumetrade():
     print('Not yet implemented.')
 
 
-def produce():
-    # To do
-    print('Not yet implemented.')
+def produce(tableau):
+    for ind, card in enumerate(tableau.tableau):
+        if card['Class'] is 'SETTLEMENT':
+            if card['Windfall'] == 0 and card['Kind']:
+                tableau.produce_good(ind)
+

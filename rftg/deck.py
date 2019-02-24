@@ -28,6 +28,10 @@ class Deck:
                 new_card['Class'] = 'SETTLEMENT'
                 new_card['Cost'] = int(new_card['Cost'])
                 new_card['VP'] = int(new_card['VP'])
+                new_card['Windfall'] = bool(int(new_card['Windfall']))
+                new_card['Defense'] = int(new_card['Defense'])
+                new_card['Good'] = 0
+
                 self.deck.append(new_card)
 
     def load_developments(self):
@@ -38,6 +42,8 @@ class Deck:
                 new_card['Class'] = 'DEVELOPMENT'
                 new_card['Cost'] = int(new_card['Cost'])
                 new_card['VP'] = int(new_card['VP'])
+                new_card['Defense'] = int(new_card['Defense'])
+
                 self.deck.append(new_card)
 
     def shuffle(self):
