@@ -5,10 +5,11 @@ from tableau import Tableau
 from scoreboard import Scoreboard
 
 # Settings (to be moved to module).
-tableau_limit = 6
+tableau_limit = 10
+vp_pool = 12
 
 # Create scoreboard
-scoreboard = Scoreboard(vp_pool=12)
+scoreboard = Scoreboard(vp_pool)
 
 def run_game():
 

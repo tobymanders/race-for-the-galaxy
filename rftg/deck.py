@@ -7,8 +7,12 @@ class Deck:
         self.deck = []
         self.discards = []
 
-        self.load_settlements()
-        self.load_developments()
+        # TODO: Remove looped deck building
+        for i in range(0, 2):
+            self.load_settlements()
+            self.load_developments()
+
+
         self.fix_phase_references()
 
         self.shuffle()

@@ -40,9 +40,15 @@ def settlement_cards(cards):
     return settlements
 
 
-def affordable_cards(hand, cards):
+def affordable_cards(hand, cards, tableau, card_type):
+    """card_type is 1 for settlements, 0 for developments"""
     spending_power = hand.spending_power()
-    affordable = [card for card in cards if card['Cost'] <= spending_power]
+    defense = tableau.get_defense()
+    if card_type == 1:
+        affordable = [card for card in cards if (card['Cost'] <= spending_power and card['Type'] == 'C')
+                        or (card['Cost'] <= defense and card['Type'] == 'M')]
+    else:
+        affordable = [card for card in cards if card['Cost'] <= spending_power]
     return affordable
 
 
@@ -83,8 +89,13 @@ def build(card, deck, hand, tableau):
     hand.remove_from_hand(card_ind)
 
     # Pay the fee.
-    cost = card['Cost']
-    discard_from_hand(cost, deck, hand)
+    if card['Class'] == 'SETTLEMENT':
+        if card['Type'] == 'C':
+            cost = card['Cost']
+            discard_from_hand(cost, deck, hand)
+    else:
+        cost = card['Cost']
+        discard_from_hand(cost, deck, hand)
 
     # Add card to tableau.
     tableau.add_to_tableau(card)
@@ -127,7 +138,7 @@ def develop(deck, hand, tableau):
     dev_cards = development_cards(hand.hand)
 
     # Just affordable cards.
-    affordable = affordable_cards(hand, dev_cards)
+    affordable = affordable_cards(hand, dev_cards, tableau, 0)
 
     # Choose a development to build (if possible).
     if affordable:
@@ -143,7 +154,7 @@ def settle(deck, hand, tableau):
     set_cards = settlement_cards(hand.hand)
 
     # Just affordable cards.
-    affordable = affordable_cards(hand, set_cards)
+    affordable = affordable_cards(hand, set_cards, tableau, 1)
 
     # Choose a development to build (if possible).
     if affordable:
