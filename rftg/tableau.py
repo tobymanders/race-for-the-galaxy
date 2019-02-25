@@ -23,25 +23,39 @@ class Tableau:
     def tableau_complete(self):
         return len(self.tableau) > self.tableau_limit
 
-    def produce_good(self, index):
-        self.tableau[index]['Good'] = 1
-
     def get_defense(self):
         defense = 0
         for card in self.tableau:
             defense += card['Defense']
         return defense
 
-    # def get_trade_powers(self):
-    #
-    # def get_consume_powers(self):
+    def use_trade_powers(self):
+        # TODO: implement
+        return 0
 
-    def consume_developments(self):
-        cards = []
+    def total_goods(self):
+        total = 0
         for card in self.tableau:
-            if card['Phase1'] == 3 or card['Phase2'] == 3:
-                cards.append(card)
-        return cards
+            if card['Class'] == 'SETTLEMENT':
+                total += card['Good']
+        return total
+
+    def produce_good(self, index):
+        self.tableau[index]['Good'] = 1
+
+    def consume_good(self, kind, vp_per_good, cards_per_good, hand, scoreboard):
+        for card in self.tableau:
+            if card['Class'] == 'SETTLEMENT' and card['Good'] == 1:
+                if kind == card['Kind'] or kind == 'any':
+                    card['Good'] == 0
+                    scoreboard.add_vp(vp_per_good)
+                    hand.draw_to_hand(hand, cards_per_good)
+
+    def use_consume_powers(self):
+        for card in self.tableau:
+            if 3 in card['Phase'] and self.total_goods > 0:
+                self.consume_good((card['Kind'], card['Consume Power']))
+
 
 
 

@@ -68,6 +68,9 @@ class Deck:
             cards.append(card)
         return cards
 
+    def draw_to_hand(self, hand, num):
+        hand.add_to_hand(self.draw_from_deck(num))
+
     def add_to_discards(self, card):
         self.discards.append(card)
         # print('discards:', self.discards)

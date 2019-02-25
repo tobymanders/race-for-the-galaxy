@@ -29,8 +29,8 @@ def run_game():
         for phase in range(0, 3):
             gf.play_phase(phase, deck, hand, tableau)
 
-        # # Update stats.
-        # gf.update_stats()
+        # Check hand limit
+        hand.hand_limit(deck)
 
         # Check for game end.
         game_end = gf.end_check(tableau, scoreboard)

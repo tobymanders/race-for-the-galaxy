@@ -98,7 +98,7 @@ def play_phase(phase, deck, hand, tableau):
     if phase == 2:
         settle(deck, hand, tableau)
     if phase == 3:
-        consume_trade()
+        consume_trade(deck, hand, tableau)
     if phase == 4:
         produce(tableau)
 
@@ -154,7 +154,7 @@ def settle(deck, hand, tableau):
 
 
 def play_trade(tableau):
-    tableau.get_trade_powers()
+    tableau.use_trade_powers()
 
 
 def consume_trade(deck, hand, tableau):
@@ -162,11 +162,8 @@ def consume_trade(deck, hand, tableau):
     play_trade(tableau)
 
     # List of consume powers
-    powers = tableau.get_consume_powers()
+    tableau.use_consume_powers()
 
-    # Go through consume powers one by one.
-    for power in powers:
-        power.use_power(deck, hand, tableau)
 
 
 def produce(tableau):
