@@ -3,6 +3,7 @@ from hand import Hand
 from deck import Deck
 from tableau import Tableau
 from scoreboard import Scoreboard
+# from settings import Settings
 
 # Settings (to be moved to module).
 tableau_limit = 10

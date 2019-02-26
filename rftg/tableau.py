@@ -1,5 +1,3 @@
-
-
 class Tableau:
 
     def __init__(self, tableau_limit):
@@ -29,9 +27,15 @@ class Tableau:
             defense += card['Defense']
         return defense
 
-    def use_trade_powers(self):
-        # TODO: implement
-        return 0
+    # def use_trade_powers(self, hand):
+    #     for card in self.tableau:
+    #         if 5 in card['Phase']:
+    #             # TODO: handle trade perks:
+    #             # bonus for resource from given card
+    #             # bonus for color resource
+    #             # bonus for any resource
+
+
 
     def total_goods(self):
         total = 0

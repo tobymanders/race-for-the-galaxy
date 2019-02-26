@@ -116,7 +116,8 @@ def play_phase(phase, deck, hand, tableau):
 
 def explore(deck, hand):
     # Draw from deck, choose discards, add remaining cards to hand.
-    # to-do: evaluate tableau and action card for perks
+    # TODO: evaluate tableau and action card for perks
+    # TODO: account for two explore cards
     num_to_draw = 3
     # num_to_discard = 1
 
@@ -146,7 +147,7 @@ def develop(deck, hand, tableau):
         # For now, choose first affordable card.
         build(affordable[0], deck, hand, tableau)
 
-    # To-do: tally perks and apply.
+    # TODO: tally perks and apply.
 
 
 def settle(deck, hand, tableau):
@@ -165,7 +166,7 @@ def settle(deck, hand, tableau):
 
 
 def play_trade(tableau):
-    tableau.use_trade_powers()
+    tableau.use_trade_powers(hand)
 
 
 def consume_trade(deck, hand, tableau):
@@ -176,8 +177,8 @@ def consume_trade(deck, hand, tableau):
     tableau.use_consume_powers()
 
 
-
 def produce(tableau):
+    # TODO: account for hand bonus perks
     for ind, card in enumerate(tableau.tableau):
         if card['Class'] is 'SETTLEMENT':
             if card['Windfall'] == 0 and card['Kind']:
