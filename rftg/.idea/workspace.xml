@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f6328c7d-19cb-4000-bf2a-bd0698e97906" name="Default Changelist" comment="">
+    <list default="true" id="f6328c7d-19cb-4000-bf2a-bd0698e97906" name="Default Changelist" comment="Implemented trade phase and class">
       <change afterPath="$PROJECT_DIR$/todo.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/deck.py" beforeDir="false" afterPath="$PROJECT_DIR$/deck.py" afterDir="false" />
@@ -26,8 +26,8 @@
               <file pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/rftg.py">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="108">
-                      <caret line="4" column="33" lean-forward="true" selection-start-line="2" selection-end-line="4" selection-end-column="33" />
+                    <state relative-caret-position="540">
+                      <caret line="27" column="23" lean-forward="true" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
                       <folding>
                         <element signature="e#0#27#0" expanded="true" />
                       </folding>
@@ -38,7 +38,7 @@
               <file pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/scoreboard.py">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="83">
+                    <state relative-caret-position="100">
                       <caret line="5" selection-start-line="5" selection-end-line="5" />
                     </state>
                   </provider>
@@ -47,7 +47,7 @@
               <file pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/deck.py">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="-7">
+                    <state relative-caret-position="1360">
                       <caret line="69" selection-start-line="69" selection-end-line="69" />
                       <folding>
                         <element signature="e#0#10#0" expanded="true" />
@@ -59,21 +59,21 @@
             </leaf>
           </split-first>
           <split-second>
-            <leaf>
+            <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
               <file pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/game_functions.py">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="1161">
-                      <caret line="43" column="16" selection-start-line="43" selection-start-column="16" selection-end-line="43" selection-end-column="16" />
+                    <state relative-caret-position="725">
+                      <caret line="184" column="75" selection-start-line="184" selection-start-column="75" selection-end-line="184" selection-end-column="75" />
                     </state>
                   </provider>
                 </entry>
               </file>
               <file pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/settings.py">
+                <entry file="file://$PROJECT_DIR$/trade.py">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="-7">
-                      <caret line="4" selection-start-line="4" selection-end-line="4" />
+                    <state relative-caret-position="780">
+                      <caret line="39" column="12" selection-start-line="39" selection-start-column="12" selection-end-line="39" selection-end-column="12" />
                     </state>
                   </provider>
                 </entry>
@@ -85,12 +85,12 @@
       <split-second>
         <splitter split-orientation="horizontal" split-proportion="0.49813294">
           <split-first>
-            <leaf>
-              <file pinned="false" current-in-tab="true">
+            <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+              <file pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/deck.py">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="999">
-                      <caret line="37" column="29" selection-start-line="37" selection-start-column="29" selection-end-line="37" selection-end-column="29" />
+                    <state relative-caret-position="92">
+                      <caret line="41" column="26" lean-forward="true" selection-start-line="41" selection-start-column="26" selection-end-line="41" selection-end-column="26" />
                       <folding>
                         <element signature="e#0#10#0" expanded="true" />
                       </folding>
@@ -98,11 +98,11 @@
                   </provider>
                 </entry>
               </file>
-              <file pinned="false" current-in-tab="false">
+              <file pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/tableau.py">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="-7">
-                      <caret line="27" column="22" selection-start-line="27" selection-start-column="22" selection-end-line="27" selection-end-column="22" />
+                    <state relative-caret-position="1380">
+                      <caret line="69" column="37" selection-start-line="69" selection-start-column="37" selection-end-line="69" selection-end-column="37" />
                     </state>
                   </provider>
                 </entry>
@@ -110,11 +110,11 @@
             </leaf>
           </split-first>
           <split-second>
-            <leaf>
+            <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
               <file pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/hand.py">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="388">
+                    <state relative-caret-position="420">
                       <caret line="21" column="18" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
                     </state>
                   </provider>
@@ -134,6 +134,12 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="tobymanders" />
+      </list>
+    </option>
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="IdeDocumentHistory">
@@ -146,10 +152,11 @@
         <option value="$PROJECT_DIR$/todo.txt" />
         <option value="$PROJECT_DIR$/deck.py" />
         <option value="$PROJECT_DIR$/hand.py" />
-        <option value="$PROJECT_DIR$/game_functions.py" />
         <option value="$PROJECT_DIR$/settings.py" />
-        <option value="$PROJECT_DIR$/rftg.py" />
+        <option value="$PROJECT_DIR$/trade.py" />
         <option value="$PROJECT_DIR$/tableau.py" />
+        <option value="$PROJECT_DIR$/rftg.py" />
+        <option value="$PROJECT_DIR$/game_functions.py" />
       </list>
     </option>
   </component>
@@ -166,24 +173,11 @@
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="rftg" type="b2602c69:ProjectViewProjectNode" />
-              <item name="rftg" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope" />
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="last_opened_file_path" value="C:/Program Files/Git/bin/git.exe" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -299,14 +293,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.35855004" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32891566" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.39126983" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.39126983" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.45" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -314,7 +307,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32891566" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32885906" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.2416212" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.24126984" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -323,7 +316,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Skeletal implementation with the first three phases. Placeholder action selection at the moment." />
     <MESSAGE value="Added scoreboard, power module, new VP accounting that can handle ? cards. New phase information in csv files." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added scoreboard, power module, new VP accounting that can handle ? cards. New phase information in csv files." />
+    <MESSAGE value="Working on trade phase." />
+    <MESSAGE value="Implemented trade phase and class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented trade phase and class" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -337,6 +332,11 @@
           <url>file://$PROJECT_DIR$/game_functions.py</url>
           <line>15</line>
           <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/tableau.py</url>
+          <line>69</line>
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -356,30 +356,23 @@
     <entry file="file://$USER_HOME$/.conda/envs/rftg/lib/python3.6/codecs.py" />
     <entry file="file://$PROJECT_DIR$/todo.txt" />
     <entry file="file://$PROJECT_DIR$/power.py" />
-    <entry file="file://$PROJECT_DIR$/tableau.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7">
-          <caret line="27" column="22" selection-start-line="27" selection-start-column="22" selection-end-line="27" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/scoreboard.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="83">
+        <state relative-caret-position="100">
           <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hand.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="21" column="18" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/deck.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7">
+        <state relative-caret-position="1360">
           <caret line="69" selection-start-line="69" selection-end-line="69" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
@@ -387,27 +380,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hand.py">
+    <entry file="file://$PROJECT_DIR$/trade.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="21" column="18" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
+        <state relative-caret-position="780">
+          <caret line="39" column="12" selection-start-line="39" selection-start-column="12" selection-end-line="39" selection-end-column="12" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/game_functions.py">
+    <entry file="file://$PROJECT_DIR$/tableau.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1161">
-          <caret line="43" column="16" selection-start-line="43" selection-start-column="16" selection-end-line="43" selection-end-column="16" />
+        <state relative-caret-position="1380">
+          <caret line="69" column="37" selection-start-line="69" selection-start-column="37" selection-end-line="69" selection-end-column="37" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/rftg.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="4" column="33" lean-forward="true" selection-start-line="2" selection-end-line="4" selection-end-column="33" />
+        <state relative-caret-position="540">
+          <caret line="27" column="23" lean-forward="true" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
           <folding>
             <element signature="e#0#27#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/game_functions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="725">
+          <caret line="184" column="75" selection-start-line="184" selection-start-column="75" selection-end-line="184" selection-end-column="75" />
         </state>
       </provider>
     </entry>
