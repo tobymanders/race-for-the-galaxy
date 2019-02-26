@@ -3,7 +3,7 @@ from hand import Hand
 from deck import Deck
 from tableau import Tableau
 from scoreboard import Scoreboard
-# from settings import Settings
+from trade import Trade
 
 # Settings (to be moved to module).
 tableau_limit = 10
@@ -18,6 +18,7 @@ def run_game():
     deck = Deck()
     hand = Hand(deck)
     tableau = Tableau(tableau_limit)
+    trade = Trade()
 
     game_end = False
 
@@ -28,8 +29,8 @@ def run_game():
         # phase = gf.choose_action()
 
         # Play phases.
-        for phase in range(0, 3):
-            gf.play_phase(phase, deck, hand, tableau)
+        for phase in range(0, 5):
+            gf.play_phase(phase, deck, hand, tableau, trade)
 
         # Check hand limit
         hand.hand_limit(deck)

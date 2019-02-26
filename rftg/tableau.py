@@ -4,6 +4,9 @@ class Tableau:
         self.tableau = []
         self.tableau_limit = tableau_limit
 
+    def __len__(self):
+        return len(self.tableau)
+
     def add_to_tableau(self, card):
         # Add card to tableau.
         self.tableau.append(card)
@@ -27,15 +30,18 @@ class Tableau:
             defense += card['Defense']
         return defense
 
-    # def use_trade_powers(self, hand):
-    #     for card in self.tableau:
-    #         if 5 in card['Phase']:
-    #             # TODO: handle trade perks:
-    #             # bonus for resource from given card
-    #             # bonus for color resource
-    #             # bonus for any resource
-
-
+    def find_goods(self, trade):
+        # Returns index of goods and their current trade value.
+        goods = []
+        for ind in range(len(self.tableau)):
+            card = self.tableau[ind]
+            if card['Class'] == 'SETTLEMENT':
+                if card['Good'] == 1:
+                    value = trade.get_trade_value(card)
+                    kind = card['Kind']
+                    good = (ind, value, kind)
+                    goods.append(good)
+        return goods
 
     def total_goods(self):
         total = 0
@@ -47,6 +53,9 @@ class Tableau:
     def produce_good(self, index):
         self.tableau[index]['Good'] = 1
 
+    def burn_good(self, index):
+        self.tableau[index]['Good'] = 0
+
     def consume_good(self, kind, vp_per_good, cards_per_good, hand, scoreboard):
         for card in self.tableau:
             if card['Class'] == 'SETTLEMENT' and card['Good'] == 1:
@@ -57,8 +66,9 @@ class Tableau:
 
     def use_consume_powers(self):
         for card in self.tableau:
-            if 3 in card['Phase'] and self.total_goods > 0:
-                self.consume_good((card['Kind'], card['Consume Power']))
+            if 3 in card['Phase']:
+                if self.total_goods() > 0:
+                    self.consume_good((card['Kind'], card['Consume Power']))
 
 
 

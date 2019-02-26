@@ -101,7 +101,7 @@ def build(card, deck, hand, tableau):
     tableau.add_to_tableau(card)
 
 
-def play_phase(phase, deck, hand, tableau):
+def play_phase(phase, deck, hand, tableau, trade):
     if phase == 0:
         explore(deck, hand)
     if phase == 1:
@@ -109,7 +109,7 @@ def play_phase(phase, deck, hand, tableau):
     if phase == 2:
         settle(deck, hand, tableau)
     if phase == 3:
-        consume_trade(deck, hand, tableau)
+        consume_trade(deck, hand, tableau, trade)
     if phase == 4:
         produce(tableau)
 
@@ -165,13 +165,12 @@ def settle(deck, hand, tableau):
     # To-do: tally perks and apply.
 
 
-def play_trade(tableau):
-    tableau.use_trade_powers(hand)
+def consume_trade(deck, hand, tableau, trade):
+    # Update trade rates
+    trade.update_trade_rates(tableau)
 
-
-def consume_trade(deck, hand, tableau):
     # For now, always play trade.
-    play_trade(tableau)
+    trade.trade(deck, hand, tableau, trade)
 
     # List of consume powers
     tableau.use_consume_powers()
@@ -183,4 +182,5 @@ def produce(tableau):
         if card['Class'] is 'SETTLEMENT':
             if card['Windfall'] == 0 and card['Kind']:
                 tableau.produce_good(ind)
+                print("Producing %s good on %s" % (card['Kind'], card['Name']))
 
