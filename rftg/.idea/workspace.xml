@@ -63,7 +63,7 @@
               <file pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/game_functions.py">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="725">
+                    <state relative-caret-position="1038">
                       <caret line="184" column="75" selection-start-line="184" selection-start-column="75" selection-end-line="184" selection-end-column="75" />
                     </state>
                   </provider>
@@ -173,7 +173,20 @@
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="rftg" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rftg" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="C:/Program Files/Git/bin/git.exe" />
@@ -288,7 +301,14 @@
       <option name="project" value="LOCAL" />
       <updated>1551052659279</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Implemented trade phase and class">
+      <created>1551155807839</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1551155807839</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -299,7 +319,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32891566" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.39126983" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.39126983" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.45" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -317,6 +337,7 @@
     <MESSAGE value="Skeletal implementation with the first three phases. Placeholder action selection at the moment." />
     <MESSAGE value="Added scoreboard, power module, new VP accounting that can handle ? cards. New phase information in csv files." />
     <MESSAGE value="Working on trade phase." />
+    <MESSAGE value="Implemented trade phase and trade module" />
     <MESSAGE value="Implemented trade phase and class" />
     <option name="LAST_COMMIT_MESSAGE" value="Implemented trade phase and class" />
   </component>
@@ -406,7 +427,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/game_functions.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="725">
+        <state relative-caret-position="1038">
           <caret line="184" column="75" selection-start-line="184" selection-start-column="75" selection-end-line="184" selection-end-column="75" />
         </state>
       </provider>
