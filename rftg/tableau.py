@@ -67,7 +67,7 @@ class Tableau:
     def use_consume_powers(self):
         for card in self.tableau:
             if 3 in card['Phase']:
-                if self.total_goods() > 0:
+                if self.total_goods() > 0 and hasattr(card, 'Kind'):
                     self.consume_good((card['Kind'], card['Consume Power']))
 
 
