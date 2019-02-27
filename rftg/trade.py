@@ -9,7 +9,16 @@ class Trade:
 
         self.card_modifiers = {'DISTANT WORLD': ('novelty', 3),
                                'BIO-HAZARD MINING WORLD': ('genes', 2),
+                               'SPACE PORT': ('rare', 2),
+                               'SPICE WORLD': ('novelty', 2),
+                               'MERCHANT WORLD': ('any', 2),
+                               'EXPORT DUTIES': ('any', 1),
+                               'GENETICS LAB': ('genes', 1),
+                               'MINING CONGLOMERATE': ('rare', 1),
+                               'TRADE LEAGUE': ('any', 1),
                                }
+        # TODO: implement trade perks for just that world's good.
+        # PIRATE WORLD
 
     def modify_trade_rate(self, color, modifier):
         self.trade_rates[color] += modifier
