@@ -5,7 +5,7 @@ class Trade:
         self.base_trade_rates = {'novelty': 2, 'rare': 3,
                             'genes': 4, 'alien': 5}
 
-        self.trade_rates = self.base_trade_rates
+        self.trade_rates = dict.copy(self.base_trade_rates)
 
         self.card_modifiers = {'DISTANT WORLD': ('novelty', 3),
                                'BIO-HAZARD MINING WORLD': ('genes', 2),
@@ -18,7 +18,7 @@ class Trade:
                                'TRADE LEAGUE': ('any', 1),
                                }
         # TODO: implement trade perks for just that world's good.
-        # PIRATE WORLD
+        # PIRATE WORLD, STAR NOMAD LAIR
 
     def modify_trade_rate(self, color, modifier):
         self.trade_rates[color] += modifier
@@ -28,8 +28,7 @@ class Trade:
         return value
 
     def update_trade_rates(self, tableau):
-        # TODO: call this function before any trade turn.
-        self.trade_rates
+        self.trade_rates = dict.copy(self.base_trade_rates)
         for card in tableau.tableau:
             name = card['Name']
             if name in self.card_modifiers:
