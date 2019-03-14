@@ -68,6 +68,7 @@ def choose_action():
 def draw_to_hand(num, deck, hand):
     cards = deck.draw_from_deck(num)
     hand.add_to_hand(cards)
+    print("Drawing %d cards to hand" % num)
 
 
 def find_index(name, cards):
@@ -81,6 +82,7 @@ def discard_from_hand(num, deck, hand):
     for i in range(0, num):
         discard = choose_discard_from_hand(hand)
         deck.add_to_discards(discard)
+    print("Discarding %d cards" % num)
 
 
 def build(card, deck, hand, tableau):
@@ -91,14 +93,16 @@ def build(card, deck, hand, tableau):
     # Pay the fee.
     if card['Class'] == 'SETTLEMENT':
         if card['Type'] == 'C':
+            print('Building civilian card', card['Name'])
             cost = card['Cost']
             discard_from_hand(cost, deck, hand)
     else:
-        cost = card['Cost']
-        discard_from_hand(cost, deck, hand)
+        print('Building military card', card['Name'])
 
     # Add card to tableau.
     tableau.add_to_tableau(card)
+
+
 
 
 def play_phase(phase, deck, hand, tableau, trade):

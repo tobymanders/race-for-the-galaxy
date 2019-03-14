@@ -17,7 +17,7 @@ class Tableau:
     def print_tableau(self):
         if self.tableau:
             for card in self.tableau:
-                print(card)
+                print(card['Class'][0], card['Name'], 'VP:', card['VP'])
         else:
             print('Tableau Empty')
 

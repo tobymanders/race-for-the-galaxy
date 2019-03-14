@@ -6,7 +6,7 @@ from scoreboard import Scoreboard
 from trade import Trade
 
 # Settings (to be moved to module).
-tableau_limit = 10
+tableau_limit = 12
 vp_pool = 12
 
 # Create scoreboard
