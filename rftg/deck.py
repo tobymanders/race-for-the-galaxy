@@ -15,6 +15,15 @@ class Deck:
 
         self.shuffle()
 
+        self.explore_perks = {
+            'MALEVOLENT LIFEFORMS': (1, 0),
+            'RESEARCH LABS': (0, 1),
+            'GALACTIC RENAISSANCE': (2, 1),
+            'EXPEDITION FORCE': (1, 0),
+            'GALACTIC SURVEY: SETI': (2, 0),
+
+        }
+
     def print_deck(self):
         for card in self.deck:
             print(card)

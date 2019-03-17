@@ -19,6 +19,10 @@ class Scoreboard:
         self.vp_count += num
         self.vp_pool -= num
 
+    def get_vp_total(self, tableau):
+        vp_total = self.count_vp(tableau) + self.get_player_vp()
+        return vp_total
+
     def count_vp(self, tableau):
         vp_tally = 0
         for card in tableau.tableau:
@@ -30,10 +34,71 @@ class Scoreboard:
 
     def count_six_card(self, card, tableau):
         vp_total = 0
-        if card['Name'] == 'NEW ECONOMY':
+        name = card['Name']
+        if name == 'NEW ECONOMY':
             consume_cards = gf.consume_cards(tableau.tableau)
             for card in gf.development_cards(consume_cards):
                 vp_total += 2
             for card in gf.settlement_cards(consume_cards):
                 vp_total += 1
-            return vp_total
+        elif name == 'MINING LEAGUE':
+            for card in gf.settlement_cards(tableau.tableau):
+                if card['Kind'] == 'rare' and card['Windfall'] == 0:
+                    vp_total += 2
+                elif card['Kind'] == 'rare' and card['Windfall'] == 1:
+                    vp_total += 1
+            for card in gf.development_cards(tableau.tableau):
+                if name == 'MINING ROBOTS' or name == 'MINING CONGLOMERATE':
+                    vp_total += 2
+        elif name == 'FREE TRADE ASSOCIATION':
+            for card in gf.settlement_cards(tableau.tableau):
+                if card['Kind'] == 'novelty' and card['Windfall'] == 0:
+                    vp_total += 2
+                elif card['Kind'] == 'novelty' and card['Windfall'] == 1:
+                    vp_total += 1
+            for card in gf.development_cards(tableau.tableau):
+                if name == 'CONSUMER MARKETS' or name == 'EXPANDING COLONY':
+                    vp_total += 2
+        elif name == 'TRADE LEAGUE':
+            trade_cards = gf.trade_cards(tableau.tableau)
+            for card in gf.development_cards(trade_cards):
+                vp_total += 2
+            for card in gf.settlement_cards(trade_cards):
+                vp_total += 1
+        elif name == 'MERCHANT GUILD':
+            for card in gf.settlement_cards(tableau.tableau):
+                if 'Kind' in card and card['Windfall'] == 0:
+                    vp_total += 2
+        elif name == 'GALACTIC IMPERIUM':
+            for card in gf.settlement_cards(tableau.tableau):
+                if 'REBEL' in card['Name']:
+                    vp_total += 2
+                elif card['Type'] == 'M':
+                    vp_total += 1
+        elif name == 'GALACTIC FEDERATION':
+            for card in gf.development_cards(tableau.tableau):
+                if card['Cost'] == 6:
+                    vp_total += 2
+                else:
+                    vp_total += 1
+        elif name == 'NEW GALACTIC ORDER':
+            vp_total += tableau.get_defense()
+        elif name == 'PAN-GALACTIC LEAGUE':
+            for card in gf.settlement_cards(tableau.tableau):
+                if card['Kind'] == 'genes':
+                    vp_total += 2
+                elif card['Type'] == 'M':
+                    vp_total += 1
+            for card in gf.development_cards(tableau.tableau):
+                if name == 'CONTACT SPECIALIST':
+                    vp_total += 3
+        elif name == 'ALIEN TECH INSTITUTE':
+            for card in gf.settlement_cards(tableau.tableau):
+                if card['Kind'] == 'alien' and card['Windfall'] == 0:
+                    vp_total += 3
+                elif card['Kind'] == 'alien' and card['Windfall'] == 1:
+                    vp_total += 2
+                elif 'ALIEN' in card['Name']:
+                    vp_total += 2
+
+        return vp_total

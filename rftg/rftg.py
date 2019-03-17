@@ -38,4 +38,7 @@ def run_game():
         # Check for game end.
         game_end = gf.end_check(tableau, scoreboard)
 
-run_game()
+    return scoreboard.get_vp_total(tableau)
+
+if __name__ == '__main__':
+    run_game()

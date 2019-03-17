@@ -13,7 +13,7 @@ def end_check(tableau, scoreboard):
         print('Final Tableau:')
         tableau.print_tableau()
 
-        vp_total = scoreboard.count_vp(tableau) + scoreboard.get_player_vp()
+        vp_total = scoreboard.get_vp_total(tableau)
         print('Final VPs:', vp_total)
 
     return ended
@@ -28,6 +28,11 @@ def choose_discard(cards):
 def choose_discard_from_hand(hand):
     discard = hand.remove_from_hand(0)
     return discard
+
+
+def explore_cards(cards):
+    explorers = [card for card in cards if '0' in card['Phase']]
+    return explorers
 
 
 def development_cards(cards):
@@ -56,6 +61,13 @@ def consume_cards(cards):
     subset = []
     for card in cards:
         if 3 in card['Phase']:
+            subset.append(card)
+    return subset
+
+def trade_cards(cards):
+    subset = []
+    for card in cards:
+        if 5 in card['Phase']:
             subset.append(card)
     return subset
 
@@ -107,7 +119,7 @@ def build(card, deck, hand, tableau):
 
 def play_phase(phase, deck, hand, tableau, trade):
     if phase == 0:
-        explore(deck, hand)
+        explore(deck, hand, tableau)
     if phase == 1:
         develop(deck, hand, tableau)
     if phase == 2:
@@ -118,11 +130,12 @@ def play_phase(phase, deck, hand, tableau, trade):
         produce(tableau)
 
 
-def explore(deck, hand):
+def explore(deck, hand, tableau):
     # Draw from deck, choose discards, add remaining cards to hand.
     # TODO: evaluate tableau and action card for perks
     # TODO: account for two explore cards
-    num_to_draw = 3
+
+    num_to_draw, num_to_discard = tableau.get_explore_perks(deck)
     # num_to_discard = 1
 
     # Draw

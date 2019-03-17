@@ -1,3 +1,5 @@
+import game_functions as gf
+
 class Tableau:
 
     def __init__(self, tableau_limit):
@@ -29,6 +31,25 @@ class Tableau:
         for card in self.tableau:
             defense += card['Defense']
         return defense
+
+    def get_explore_perks(self, deck):
+        num_to_draw = 3
+        num_to_keep = 2
+        for card in self.tableau:
+            try:
+                a, b = deck.explore_perks[card['Name']]
+            except:
+                continue
+            num_to_draw += a
+            num_to_keep += b
+
+        if num_to_keep >= num_to_draw:
+            num_to_discard = 0
+        else:
+            num_to_discard = num_to_draw - num_to_keep
+
+        print('New explore ability: draw %i, keep %i' % (num_to_draw, num_to_keep))
+        return num_to_draw, num_to_discard
 
     def find_goods(self, trade):
         # Returns index of goods and their current trade value.
